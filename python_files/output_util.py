@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 
 """
 Utility method for export
@@ -21,7 +22,8 @@ def append_to_file(query):
     content = f"\n\n{dt}\n{query}"
 
     # append to the file
-    with open("queries.txt", "a") as file:
+    output_file = os.path.join(os.path.dirname(__file__), '../queries.txt')
+    with open(output_file, "a") as file:
         file.write(content)
 
     return

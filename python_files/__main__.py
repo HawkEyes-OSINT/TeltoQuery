@@ -1,5 +1,6 @@
 import import_util
 import output_util
+import os
 
 """
 Create a query to search for keywords in channels.
@@ -37,8 +38,8 @@ def create_query(keywords, channels):
     return query
 
 
-keywords = import_util.get_data('keywords.csv')
-channels = import_util.get_data('channels.csv')
+keywords = import_util.get_data(os.path.join(os.path.dirname(__file__), '../keywords.csv'))
+channels = import_util.get_data(os.path.join(os.path.dirname(__file__), '../channels.csv'))
 channels = import_util.usernames_to_titles(channels)
 output_util.append_to_file(create_query(keywords, channels))
 
